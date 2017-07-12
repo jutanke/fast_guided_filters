@@ -17,27 +17,43 @@ namespace fgf {
     const size_t s)
   {
 
-    cv::Mat I_p, p_p;
-    size_t r_p = r / s;
-    cv::Size r_p_size(r_p, r_p);
+    cv::Mat I_sub, p_sub;
+    size_t r_sub = r / s;
+    cv::Size r_p_size(r_sub, r_sub);
 
     cv::Mat mean_I, mean_p;
 
-    cv::resize(I, I_p, cv::Size(I.cols/s, I.rows/s), 0, 0, cv::INTER_NEAREST);
-    cv::blur(I_p, mean_I, r_p_size);
+    cv::resize(I, I_sub, cv::Size(I.cols/s, I.rows/s), 0, 0, cv::INTER_NEAREST);
+    cv::blur(I_sub, mean_I, r_p_size);
 
     if (&I == &p) {
-      p_p = I_p;
+      p_sub = I_sub;
       mean_p = mean_I;
     } else {
-      cv::resize(p, p_p, cv::Size(p.cols/s, p.rows/s), 0, 0, cv::INTER_NEAREST);
-      cv::blur(p_p, mean_p, r_p_size);
+      cv::resize(p, p_sub, cv::Size(p.cols/s, p.rows/s), 0, 0, cv::INTER_NEAREST);
+      cv::blur(p_sub, mean_p, r_p_size);
     }
 
-    cv::Mat corr_I;
-    cv::blur(I, corr_I, )
+    cv::Mat mean_Ip, cov_Ip;
+    cv::blur(I_sub.mul(p_sub), mean_Ip, r_p_size);
+    cov_Ip = mean_Ip - mean_I.mul(mean_p); // cov of (I, p) in each local patch
 
-    q = mean_I;
+    cv::Mat mean_II, var_I;
+    cv::blur(I_sub.mul(I_sub), mean_II, r_p_size);
+    var_I = mean_II - mean_I.mul(mean_I);
+
+    cv::Mat a, b;
+    a = cov_Ip / (var_I + eps);
+    b = mean_p - a.mul(mean_I);
+
+    cv::Mat mean_a, mean_b;
+    cv::blur(a, a, r_p_size);
+    cv::blur(b, b, r_p_size);
+
+    cv::resize(a, a, I.size());
+    cv::resize(b, b, p.size());
+
+    q = a.mul(I) + b;
   }
 
 

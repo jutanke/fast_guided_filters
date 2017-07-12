@@ -10,7 +10,7 @@ int main()
 
 	cv::Mat blur;
 	size_t r = 4;
-	double eps = 0.4;
+	double eps = 3.4;
 	size_t s = 4;
 	fgf::blur(image, blur, r, eps, s);
 
