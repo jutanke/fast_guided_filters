@@ -9,10 +9,10 @@ int main()
 	image = cv::imread("../test/smila.jpg");
 
 	cv::Mat blur;
-	size_t s = 4;
+	size_t r = 4;
 	double eps = 0.4;
-	size_t scale = 1;
-	fgf::blur(image, blur, s, eps, scale);
+	size_t s = 4;
+	fgf::blur(image, blur, r, eps, s);
 
 	cv::namedWindow("Display Image", cv::WINDOW_AUTOSIZE );
   cv::imshow("Display Image", blur);
