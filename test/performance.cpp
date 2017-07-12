@@ -6,7 +6,7 @@ int main()
 {
 
 	cv::Mat image;
-	image = cv::imread("../test/smila.jpg");
+	image = cv::imread("../test/smila.jpg", 0);
 
 	cv::Mat blur;
 	size_t r = 4;

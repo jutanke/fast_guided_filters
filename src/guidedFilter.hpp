@@ -7,6 +7,12 @@ namespace fgf {
 
   /**  @brief transfers structure of one image onto the other
 
+    @param I guidance image
+    @param p filtering input image
+    @param q filter output image
+    @param r local window radius
+    @param eps regularization parameter
+    @param s subsampling ratio 
   */
   void inline structureTransference(
     const cv::Mat &I,
