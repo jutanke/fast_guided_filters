@@ -1,5 +1,5 @@
-#ifndef GFG_H
-#define GFG_H
+#ifndef GUIDED_FILTER_H
+#define GUIDED_FILTER_H
 #include <iostream>
 #include <opencv2/opencv.hpp>
 
@@ -12,7 +12,7 @@ namespace fgf {
     @param q filter output image
     @param r local window radius
     @param eps regularization parameter
-    @param s subsampling ratio 
+    @param s subsampling ratio
   */
   void inline structureTransference(
     const cv::Mat &I,
