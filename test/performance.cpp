@@ -4,7 +4,15 @@
 
 int main()
 {
+/*
+	cv::Mat N(10, 10, CV_32F, cv::Scalar(1));
+	std::cout << N << std::endl;
 
+	cv::Mat N_ = fgf::boxfilter(N, 2);
+	std::cout << N_ << std::endl;
+
+	return 0;
+*/
 	cv::Mat image;
 	image = cv::imread("../test/cat.bmp", 0);
 
