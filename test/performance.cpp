@@ -4,17 +4,37 @@
 
 int main()
 {
-/*
-	cv::Mat N(10, 10, CV_32F, cv::Scalar(1));
-	std::cout << N << std::endl;
+	/*
+	cv::Mat t[] = {
+		cv::Mat::ones(3, 2, CV_32F),
+		cv::Mat::ones(3, 2, CV_32F),
+		cv::Mat::ones(3, 2, CV_32F)
+	};
+	cv::Mat o;
+	//cv::Mat o = cv::Mat::ones(3, 2, 3);
+	cv::merge(t, 3, o);
+	std::cout << "o:" << o.channels() << std::endl;
 
-	cv::Mat N_ = fgf::boxfilter(N, 2);
-	std::cout << N_ << std::endl;
+	cv::Mat mult = cv::Mat::ones(3,2, CV_32F);
+	mult = mult * 14;
+	std::cout << mult << std::endl;
 
-	return 0;
-*/
+	//o * mult;
+	o = fgf::mul(o, mult);
+
+	cv::Mat out[3];
+	cv::split(o, out);
+	for (size_t i = 0; i < 3; ++i) {
+		cv::Mat c = out[i];
+		std::cout << "---" << std::endl;
+		std::cout << c << std::endl;
+	}
+
+	exit(0);*/
+
 	cv::Mat image;
-	image = cv::imread("../test/cat.bmp", 0);
+	image = cv::imread("../test/smila.jpg");
+	//image = cv::imread("../test/cat.bmp", 0);
 
 	cv::Mat blur;
 	size_t r = 4;
