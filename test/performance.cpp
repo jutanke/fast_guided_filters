@@ -19,7 +19,7 @@ int main()
 	cv::Mat blur;
 	size_t r = 4;
 	double eps = 0.2 * 0.2;
-	size_t s = 4;
+	size_t s = 1;
 
 	std::vector<double> elapsed_secs;
 
