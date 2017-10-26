@@ -18,7 +18,7 @@ double clock_guidedFilterRuns(size_t r, double eps, size_t s,
 
 	for (size_t i = 0; i < nbr_tests; ++i) {
 		cv::Mat image, blur;
-		image = cv::imread(image_path, 0);
+		image = cv::imread(image_path);
 		cv::resize(image, image, cv::Size(0, 0), resize_factor, resize_factor);
 		clock_t begin = clock();
 		fgf::blur(image, blur, r, eps, s);

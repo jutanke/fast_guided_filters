@@ -130,8 +130,6 @@ namespace fgf {
 
         cv::Mat bgr[3];
         cv::split(I_, bgr);
-
-
         std::vector<cv::Mat> bgrBlur(3);
 
         #pragma omp parallel for
@@ -167,18 +165,15 @@ namespace fgf {
       cv::Mat bgr[3];
       cv::split(in, bgr);
 
-      cv::Mat bBlur, gBlur, rBlur;
 
-      structureTransference1C(bgr[0], bgr[0], bBlur, r, eps, s);
-      structureTransference1C(bgr[1], bgr[1], gBlur, r, eps, s);
-      structureTransference1C(bgr[2], bgr[2], rBlur, r, eps, s);
+      std::vector<cv::Mat> bgrBlur(3);
 
-      std::vector<cv::Mat> channels;
-      channels.push_back(bBlur);
-      channels.push_back(gBlur);
-      channels.push_back(rBlur);
+      #pragma omp parallel for
+      for(size_t i = 0; i < 3; ++i) {
+        structureTransference1C(bgr[i], bgr[i], bgrBlur[i], r, eps, s);
+      }
 
-      cv::merge(channels, out);
+      cv::merge(bgrBlur, out);
     }
   }
 
