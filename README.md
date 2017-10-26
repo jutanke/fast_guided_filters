@@ -6,6 +6,11 @@ Headers-only OpenCV3 implementation of the ![Fast Guided Filter](https://arxiv.o
 
 The animation starts at the original image and then increases the subsampling size by 4 every round: Subsampling sizes: [1, 4, 8, 12, 16, 20]
 
+## Performance
+
+Measuring was perfomed on Ubuntu 16.04 with an Intel(R) Core(TM) i7-4500U CPU @ 1.80GHz and 8GB of RAM
+![perf](https://user-images.githubusercontent.com/831215/32043935-65753344-ba3c-11e7-97e1-325ec58c8567.png)
+
 ## Samples
 
 Bluring an image with radius 4, epsilon 0.2^2 and sumsampling-size 4:
