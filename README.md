@@ -11,6 +11,38 @@ The animation starts at the original image and then increases the subsampling si
 Measuring was perfomed on Ubuntu 16.04 with an Intel(R) Core(TM) i7-4500U CPU @ 1.80GHz and 8GB of RAM
 ![perf](https://user-images.githubusercontent.com/831215/32043935-65753344-ba3c-11e7-97e1-325ec58c8567.png)
 
+## Usage
+
+Simply add the header file "src/guidedFilter.hpp" whereever you like and point to it from your source code.
+
+```c++
+#include <iostream>
+#include <opencv2/opencv.hpp>
+#include "../src/guidedFilter.hpp"
+
+int main()
+{
+  cv::Mat image;
+  image = cv::imread("../test/cat.bmp", 0);
+  
+  cv::Mat blur;
+  int r = 8;
+  double eps = 0.4 * 0.4;
+  size_t s = 4;
+  
+  fgf::blur(image, blur, r, eps, s);
+  
+  cv::namedWindow("Display Image", cv::WINDOW_AUTOSIZE );
+  cv::imshow("Display Image", image);
+  cv::waitKey(0);
+  
+  cv::namedWindow("Display Image", cv::WINDOW_AUTOSIZE );
+  cv::imshow("Display Image (own gf)", blur);
+  cv::waitKey(0);
+}
+
+```
+
 ## Samples
 
 Bluring an image with radius 4, epsilon 0.2^2 and sumsampling-size 4:
