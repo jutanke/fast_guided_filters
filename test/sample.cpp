@@ -1,7 +1,6 @@
 #include <iostream>
 #include <opencv2/opencv.hpp>
 #include <opencv2/ximgproc.hpp>
-#include <ctime>
 #include "../src/guidedFilter.hpp"
 
 using namespace cv::ximgproc;
@@ -19,18 +18,9 @@ int main()
 	size_t s = 1;
 
 	cv::Mat dst;
-
-	clock_t begin = clock();
 	guidedFilter(image, image, dst, r, 1000, -1);
-	clock_t end = clock();
-  double elapsed_secs = double(end - begin) / CLOCKS_PER_SEC;
-	std::cout << "ocv:" << elapsed_secs << std::endl;
 
-	begin = clock();
 	fgf::blur(image, blur, r, eps, s);
-	end = clock();
-  elapsed_secs = double(end - begin) / CLOCKS_PER_SEC;
-	std::cout << "own:" << elapsed_secs << std::endl;
 
 	// ----------------------
 
