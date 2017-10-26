@@ -11,7 +11,7 @@ int main()
 {
 
 	cv::Mat image;
-	image = cv::imread("../test/smila.jpg");
+	image = cv::imread("../test/smila.jpg", 0);
 	//image = cv::imread("../test/cat.bmp", 0);
 
 	size_t nbr_tests = 100;
@@ -56,6 +56,10 @@ int main()
 	) / elapsed_secs_ocv.size();
 
 	std::cout << "ocv: elapsed:" << fgf_avg_elapsed_sec_ocv << std::endl;
+
+	cv::namedWindow("Display Image", cv::WINDOW_AUTOSIZE );
+  cv::imshow("Display Image", dst);
+	cv::waitKey(0);
 
 	return 0;
 }
