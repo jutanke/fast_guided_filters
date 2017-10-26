@@ -11,7 +11,7 @@ int main()
 {
 
 	cv::Mat image;
-	image = cv::imread("../test/smila.jpg", 0);
+	image = cv::imread("../test/smila.jpg");
 	//image = cv::imread("../test/cat.bmp", 0);
 
 	size_t nbr_tests = 100;

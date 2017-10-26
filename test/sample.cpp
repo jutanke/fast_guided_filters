@@ -10,8 +10,8 @@ int main()
 {
 
 	cv::Mat image;
-	//image = cv::imread("../test/smila.jpg");
-	image = cv::imread("../test/cat.bmp", 0);
+	image = cv::imread("../test/smila.jpg");
+	//image = cv::imread("../test/cat.bmp", 0);
 
 	cv::Mat blur;
 	int r = 8;
@@ -46,14 +46,6 @@ int main()
 	cv::namedWindow("Display Image", cv::WINDOW_AUTOSIZE );
 	cv::imshow("Display Image (own gf)", blur);
 	cv::waitKey(0);
-
-	/*dst.convertTo(dst, CV_32F);
-	blur.convertTo(blur, CV_32F);
-
-	cv::Mat diff = dst - blur;
-	double min, max;
-	cv::minMaxLoc(diff, &min, &max);
-	std::cout << "min:" << min << ", max:" << max << std::endl;*/
 
 	return 0;
 }
