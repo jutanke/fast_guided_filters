@@ -43,6 +43,22 @@ int main()
 
 ```
 
+### Minimal CMake
+
+```cmake
+cmake_minimum_required(VERSION 2.8)
+project( DisplayImage )
+find_package( OpenCV REQUIRED )
+find_package(OpenMP)
+if (OPENMP_FOUND)
+    set (CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${OpenMP_C_FLAGS}")
+    set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${OpenMP_CXX_FLAGS}")
+endif()
+
+add_executable( Sample test/sample.cpp )
+target_link_libraries( Sample ${OpenCV_LIBS} )
+```
+
 ## Samples
 
 Bluring an image with radius 4, epsilon 0.2^2 and sumsampling-size 4:
