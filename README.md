@@ -1,6 +1,6 @@
 # Fast Guided Filters
 
-Headers-only OpenCV3 implementation of the ![Fast Guided Filter](https://arxiv.org/pdf/1505.00996.pdf). This implementation is more faithful to the original papers parameters than the current OpenCV version (OCV 3.3.0) as it mirrors the original Matlab code. The runtime of the unscaled guided filter (s=1) and the OpenCV guided filter implementation are equivalent. 
+Headers-only OpenCV3 implementation of the [Fast Guided Filter](https://arxiv.org/pdf/1505.00996.pdf). This implementation is more faithful to the original papers parameters than the current OpenCV version (OCV 3.3.0) as it mirrors the original Matlab code. The runtime of the unscaled guided filter (s=1) and the OpenCV guided filter implementation are equivalent. 
 
 ![smila_animation](https://user-images.githubusercontent.com/831215/31575901-bb16c344-b0f0-11e7-9c08-d73e99ee0379.gif)
 
